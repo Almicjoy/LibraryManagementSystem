@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.LibraryManagementSystem.model.Book;
 import com.demo.LibraryManagementSystem.service.BookService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class RestControllerApp {
 	
@@ -24,7 +26,7 @@ public class RestControllerApp {
 	BookService bookService;
 	
 	@PostMapping("/create")
-	public Book saveBook(@RequestBody Book b) {
+	public Book saveBook(@Valid @RequestBody Book b) {
 		return bookService.saveBook(b);
 	}
 	

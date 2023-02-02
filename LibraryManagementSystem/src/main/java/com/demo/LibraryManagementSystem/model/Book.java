@@ -3,14 +3,24 @@ package com.demo.LibraryManagementSystem.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table(name="books")
 public class Book {
 	@Id
 	private Integer bookId;
+	
+	@Size(min = 7, message = "Author name is too short")
 	private String bookAuthor;
+	
 	private String bookTitle;
+	
+	@NotNull(message="Book price is necessary")
 	private Float bookPrice;
 	public Book(Integer bookId, String bookAuthor, String bookTitle, Float bookPrice) {
 		super();
